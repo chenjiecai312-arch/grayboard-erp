@@ -1,0 +1,37 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: grayboard-erp
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3307/grayboard?useSSL=false&allowPublicKeyRetrieval=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: grayboard
+    password: grayboard
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      mode: always
+      continue-on-error: true
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+  cache:
+    type: redis
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    default-property-inclusion: always
+    deserialization:
+      fail-on-unknown-properties: false
+
+grayboard:
+  sqlite-path: ../backend/grayboard.db
+  access-token-ttl-hours: 2

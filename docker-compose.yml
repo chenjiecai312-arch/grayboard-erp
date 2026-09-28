@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: grayboard-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: grayboard
+      MYSQL_DATABASE: grayboard
+      MYSQL_USER: grayboard
+      MYSQL_PASSWORD: grayboard
+    ports:
+      - "3307:3306"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - grayboard-mysql:/var/lib/mysql
+
+volumes:
+  grayboard-mysql:
